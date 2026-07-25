@@ -73,7 +73,6 @@ public class BankAccountService {
                 account.getBalance(),
                 account.getIsActive(),
                 account.getNote(),
-                account.getCreatedAt()
-        );
+                account.getCreatedAt());
     }
 }
