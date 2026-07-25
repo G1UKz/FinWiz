@@ -1,14 +1,22 @@
-__pycache__/
-*.py[cod]
-*.egg-info/
-dist/
+# Gradle
+.gradle/
 build/
-.env
-.venv/
-venv/
-.vscode/
+gradle-app.setting
+
+# IDE
 .idea/
-*.db
-*.sqlite3
-postgres_data/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Java
+*.class
+*.jar
+*.war
+
+# OS
 .DS_Store
+
+# Docker
+postgres_data/
