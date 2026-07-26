@@ -2,6 +2,7 @@ import { useAuthStore } from '@/features/auth/store';
 import { useAccounts } from '@/features/accounts/hooks';
 import { useTransactions } from '@/features/transactions/hooks';
 import TransactionForm from '@/features/transactions/TransactionForm';
+import CategoryChart from '@/features/analytics/CategoryChart';
 import { useNavigate } from 'react-router-dom';
 
 export default function DashboardPage() {
@@ -17,10 +18,7 @@ export default function DashboardPage() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-gray-900">FinWiz</h1>
         <button
-          onClick={() => {
-            logout();
-            navigate('/login');
-          }}
+          onClick={() => { logout(); navigate('/login'); }}
           className="text-sm text-red-600 hover:text-red-700 font-medium"
         >
           Выйти
@@ -51,13 +49,12 @@ export default function DashboardPage() {
             </p>
           </div>
         ))}
-        {accounts?.length === 0 && (
-          <p className="text-gray-400 col-span-full">Нет счетов</p>
-        )}
       </div>
 
       <h2 className="text-lg font-semibold text-gray-800 mb-4">Последние операции</h2>
       <TransactionForm />
+      <CategoryChart />
+
       <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
         {txLoading && <p className="p-4 text-gray-500">Загрузка...</p>}
         {transactions && transactions.length > 0 ? (

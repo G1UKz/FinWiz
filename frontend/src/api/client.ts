@@ -18,6 +18,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('finwiz_token');
+      localStorage.removeItem('finwiz_user_id');
       window.location.href = '/login';
     }
     return Promise.reject(error);
