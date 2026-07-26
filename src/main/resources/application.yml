@@ -36,3 +36,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+jwt:
+  secret: ${JWT_SECRET:Zm9yLXRlc3Rpbmctb25seS1jaGFuZ2UtaW4tcHJvZHVjdGlvbg==}
+  expiration: 86400000  # 24 часа в мс

@@ -90,3 +90,41 @@ GET {{baseUrl}}/users/{{userId}}/transactions
 
 ### List Account Transactions
 GET {{baseUrl}}/accounts/{{accountId}}/transactions
+
+### === Phase 2: Security Smoke Tests ===
+
+# PUBLIC: Actuator (no token needed)
+GET http://localhost:8080/actuator/health
+
+### PUBLIC: Swagger UI (no token needed)
+GET http://localhost:8080/swagger-ui/index.html
+
+### PRIVATE: Users list WITHOUT token (expect 403)
+GET http://localhost:8080/users
+
+### PRIVATE: Users list WITH invalid token (expect error/403)
+GET http://localhost:8080/users
+Authorization: Bearer invalid.token.here
+
+### AUTH: Register
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "ivan@test.com",
+  "password": "secret123",
+  "name": "Ivan"
+}
+
+### AUTH: Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "ivan@test.com",
+  "password": "secret123"
+}
+
+### USERS: Get list WITH token (вставь токен из ответа выше)
+GET http://localhost:8080/users
+Authorization: Bearer <token-here>
