@@ -5,6 +5,7 @@ import finwiz.app.dto.transaction.TransactionResponse;
 import finwiz.app.entity.bankaccount.BankAccount;
 import finwiz.app.entity.category.Category;
 import finwiz.app.entity.transaction.Transaction;
+import finwiz.app.entity.transaction.TransactionType;
 import finwiz.app.entity.user.User;
 import finwiz.app.exception.ResourceNotFoundException;
 import finwiz.app.repository.bankaccount.BankAccountRepository;
@@ -48,7 +49,14 @@ public class TransactionService {
                 .transactionDate(request.transactionDate())
                 .build();
 
-        return toResponse(transactionRepository.save(transaction));
+        Transaction saved = transactionRepository.save(transaction);
+
+        // Обновляем баланс счёта
+        Long delta = request.type() == TransactionType.INCOME ? request.amountMinor() : -request.amountMinor();
+        account.setBalanceMinor(account.getBalanceMinor() + delta);
+        bankAccountRepository.save(account);
+
+        return toResponse(saved);
     }
 
     @Transactional(readOnly = true)
