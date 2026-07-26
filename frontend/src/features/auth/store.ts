@@ -1,26 +1,25 @@
 import { create } from 'zustand';
-import type { User } from './types';
 
 interface AuthState {
-  user: User | null;
+  userId: number | null;
   token: string | null;
   isAuthenticated: boolean;
-  login: (user: User, token: string) => void;
+  login: (userId: number, token: string) => void;
   logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
+  userId: null,
   token: localStorage.getItem('finwiz_token'),
   isAuthenticated: !!localStorage.getItem('finwiz_token'),
 
-  login: (user, token) => {
+  login: (userId, token) => {
     localStorage.setItem('finwiz_token', token);
-    set({ user, token, isAuthenticated: true });
+    set({ userId, token, isAuthenticated: true });
   },
 
   logout: () => {
     localStorage.removeItem('finwiz_token');
-    set({ user: null, token: null, isAuthenticated: false });
+    set({ userId: null, token: null, isAuthenticated: false });
   },
 }));

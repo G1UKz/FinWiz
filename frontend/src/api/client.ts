@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: '',              // ← относительные пути: /auth/login, /users/1
+  baseURL: '',
   headers: { 'Content-Type': 'application/json' },
 });
 

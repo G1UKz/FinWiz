@@ -29,7 +29,7 @@ export default function LoginForm() {
   const mutation = useMutation({
     mutationFn: loginApi,
     onSuccess: (data) => {
-      login(data.user, data.token);
+      login(data.userId, data.accessToken);
       navigate('/dashboard');
     },
   });
