@@ -1,6 +1,7 @@
 import { useAuthStore } from '@/features/auth/store';
 import { useAccounts } from '@/features/accounts/hooks';
 import { useTransactions } from '@/features/transactions/hooks';
+import TransactionForm from '@/features/transactions/TransactionForm';
 import { useNavigate } from 'react-router-dom';
 
 export default function DashboardPage() {
@@ -56,6 +57,7 @@ export default function DashboardPage() {
       </div>
 
       <h2 className="text-lg font-semibold text-gray-800 mb-4">Последние операции</h2>
+      <TransactionForm />
       <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
         {txLoading && <p className="p-4 text-gray-500">Загрузка...</p>}
         {transactions && transactions.length > 0 ? (
