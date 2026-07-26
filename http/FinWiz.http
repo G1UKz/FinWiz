@@ -1,0 +1,92 @@
+### Variables
+@baseUrl = http://localhost:8080
+@userId = 1
+@accountId = 1
+
+### Health Check
+GET {{baseUrl}}/swagger-ui.html
+
+### ========== USER ==========
+
+### Create User
+# @name createUser
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "email": "ivan@example.com",
+  "password": "secret123"
+}
+
+### Get User
+GET {{baseUrl}}/users/{{userId}}
+
+### ========== BANK ACCOUNT ==========
+
+### Create Account
+POST {{baseUrl}}/users/{{userId}}/accounts
+Content-Type: application/json
+
+{
+  "name": "Тинькофф Black",
+  "type": "DEBIT",
+  "currencyCode": "RUB",
+  "balanceMinor": 250000,
+  "color": "#FFDD2D"
+}
+
+### List User Accounts
+GET {{baseUrl}}/users/{{userId}}/accounts
+
+### Get Account
+GET {{baseUrl}}/accounts/{{accountId}}
+
+### ========== CATEGORY ==========
+
+### Create Custom Category
+POST {{baseUrl}}/users/{{userId}}/categories
+Content-Type: application/json
+
+{
+  "name": "Кофе",
+  "type": "EXPENSE",
+  "color": "#795548",
+  "icon": "coffee"
+}
+
+### List Categories (system + user)
+GET {{baseUrl}}/users/{{userId}}/categories
+
+### ========== TRANSACTION ==========
+
+### Income: Salary
+POST {{baseUrl}}/users/{{userId}}/transactions
+Content-Type: application/json
+
+{
+  "bankAccountId": {{accountId}},
+  "categoryId": 1,
+  "type": "INCOME",
+  "amountMinor": 15000000,
+  "description": "Зарплата за июль",
+  "transactionDate": "2026-07-25"
+}
+
+### Expense: Groceries
+POST {{baseUrl}}/users/{{userId}}/transactions
+Content-Type: application/json
+
+{
+  "bankAccountId": {{accountId}},
+  "categoryId": 4,
+  "type": "EXPENSE",
+  "amountMinor": 345000,
+  "description": "Пятёрочка",
+  "transactionDate": "2026-07-26"
+}
+
+### List User Transactions
+GET {{baseUrl}}/users/{{userId}}/transactions
+
+### List Account Transactions
+GET {{baseUrl}}/accounts/{{accountId}}/transactions

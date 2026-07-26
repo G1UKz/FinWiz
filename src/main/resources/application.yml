@@ -27,3 +27,12 @@ logging:
     org.hibernate.orm.jdbc.bind: TRACE
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
