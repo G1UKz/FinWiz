@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponse createUser(@Valid @RequestBody CreateUserRequest request) {
@@ -23,6 +22,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserResponse getUser(@PathVariable Long id) {
+        System.out.println("hot reload test");
         return userService.getUser(id);
     }
 }
