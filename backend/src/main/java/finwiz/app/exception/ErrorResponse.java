@@ -1,4 +1,4 @@
-package finwiz.app.dto;
+package finwiz.app.exception;
 
 import java.time.LocalDateTime;
 
