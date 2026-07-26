@@ -2,6 +2,7 @@ import { useAuthStore } from '@/features/auth/store';
 import { useAccounts } from '@/features/accounts/hooks';
 import { useTransactions } from '@/features/transactions/hooks';
 import TransactionForm from '@/features/transactions/TransactionForm';
+import AccountForm from '@/features/accounts/AccountForm';
 import CategoryChart from '@/features/analytics/CategoryChart';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,7 +34,7 @@ export default function DashboardPage() {
       </div>
 
       <h2 className="text-lg font-semibold text-gray-800 mb-4">Мои счета</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
         {accountsLoading && <p className="text-gray-500 col-span-full">Загрузка...</p>}
         {accounts?.map((acc) => (
           <div key={acc.id} className="bg-white p-5 rounded-xl shadow-sm border">
@@ -50,8 +51,9 @@ export default function DashboardPage() {
           </div>
         ))}
       </div>
+      <AccountForm />
 
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">Последние операции</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-4 mt-8">Последние операции</h2>
       <TransactionForm />
       <CategoryChart />
 
