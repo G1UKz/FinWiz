@@ -126,5 +126,5 @@ Content-Type: application/json
 }
 
 ### USERS: Get list WITH token (вставь токен из ответа выше)
-GET http://localhost:8080/users
-Authorization: Bearer <token-here>
+GET http://localhost:8080/users/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsInN1YiI6Iml2YW5AdGVzdC5jb20iLCJpYXQiOjE3ODUwNTg2OTYsImV4cCI6MTc4NTE0NTA5Nn0.PEoqJUfunMxuFoIgRRFsQQqv4iYW1JBDncnyS2NAUWM

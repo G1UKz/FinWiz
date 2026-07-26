@@ -47,8 +47,12 @@ public class JwtService {
 
     // Проверка: токен выдан этому email и ещё не протух?
     public boolean isTokenValid(String token, String userEmail) {
-        final String extractedEmail = extractEmail(token);
-        return extractedEmail.equals(userEmail) && !isTokenExpired(token);
+        try {
+            final String extractedEmail = extractEmail(token);
+            return extractedEmail.equals(userEmail) && !isTokenExpired(token);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // --- Методы для извлечения данных из токена ---

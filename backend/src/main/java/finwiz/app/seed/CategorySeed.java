@@ -1,8 +1,8 @@
 package finwiz.app.seed;
 
-import finwiz.app.entity.Category;
-import finwiz.app.entity.enums.CategoryType;
-import finwiz.app.repository.CategoryRepository;
+import finwiz.app.entity.category.Category;
+import finwiz.app.entity.category.CategoryType;
+import finwiz.app.repository.category.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

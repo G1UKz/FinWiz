@@ -1,7 +1,7 @@
 package finwiz.app.seed;
 
-import finwiz.app.entity.Currency;
-import finwiz.app.repository.CurrencyRepository;
+import finwiz.app.entity.currency.Currency;
+import finwiz.app.repository.currency.CurrencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
